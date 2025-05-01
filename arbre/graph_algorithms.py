@@ -60,7 +60,7 @@ def prim(start_id=None):
     #Initialisation du resultat
     nodes_in_mst = {start_id}
     mst_edges = []
-    total_weight = 0
+    # total_weight = 0
 
     graph_nodes = set(graph.keys())
 
@@ -80,21 +80,9 @@ def prim(start_id=None):
         u,v, weight = min_edge
         mst_edges.append(min_edge)
         nodes_in_mst.add(v)
-        total_weight += weight
+        # total_weight += weight
 
-        return mst_edges, nodes_in_mst, total_weight
-    # #tant que  tout les noeuds de l'arbre ne sont pas explorés
-    # while set(nodes_in_mst) != set(graph):
-    #     #On cherche le plus petit poids de l'arbre
-    #     min_edge = None
-    #     for node in nodes_in_mst:
-    #         for neighbor in graph:
-    #             if neighbor not in nodes_in_mst:
-    #                 if min_edge is None :
-    #                     min_edge = (node, neighbor)
-
-       
-    pass  # À implémenter
+        return mst_edges, nodes_in_mst
 
 def kruskal():
     """
