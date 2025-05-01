@@ -49,7 +49,8 @@ class FamilyRelation(models.Model):
     from_person = models.ForeignKey(Person, related_name='outgoing_relations', on_delete=models.CASCADE)
     to_person = models.ForeignKey(Person, related_name='incoming_relations', on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=RELATION_TYPES)
-
+    rank = models.IntegerField(default=0)
+    
     class Meta:
         unique_together = ('from_person', 'to_person', 'type')
 
