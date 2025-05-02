@@ -40,6 +40,8 @@ class Person(models.Model):
         super().delete(*args, **kwargs)
 
 
+
+
 class FamilyRelation(models.Model):
     RELATION_TYPES = [
         ('spouse', 'Conjoint'),
