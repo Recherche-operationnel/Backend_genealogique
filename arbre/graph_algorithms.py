@@ -41,13 +41,12 @@ def bellman_ford(start_id, goal_id):
     """
     pass  # À implémenter
 
-def prim(start_id=None):
+def prim(start_id):
     """
     Algorithme de Prim pour arbre couvrant minimum (MST)
     
     Entrée:
-        graph: un dictionnaire où les clés sont les IDs des personnes et 
-               les valeurs sont des listes de tuples (id_dest, poids)
+        start_id: l'identifiant du noeud à partir duquel on veut trouver l'arbre couvrant minimum 
     
     Sortie:
         Un tuple (arbre_sommets, arbre_aretes, poids_total) représentant l'arbre couvrant de poids minimum
@@ -55,16 +54,16 @@ def prim(start_id=None):
     """
     graph = build_graph()
     relations = FamilyRelation.objects.all()
-    print(graph)
-    print(relations)
+    # print(graph)
+    # print(relations)
     #Initialisation du resultat
     nodes_in_mst = {start_id}
     mst_edges = []
-    # total_weight = 0
+    total_weight = 0
 
     graph_nodes = set(graph.keys())
 
-    while nodes_in_mst != graph_nodes:
+    while nodes_in_mst != graph_nodes :
         #On cherche le plus petit poids de l'arbre
         min_edge = None
         for node in nodes_in_mst:
@@ -76,13 +75,14 @@ def prim(start_id=None):
 
         if min_edge is None:
             print("Le graphe n'est pas connexe")
+            return nodes_in_mst, mst_edges, total_weight
         
         u,v, weight = min_edge
         mst_edges.append(min_edge)
         nodes_in_mst.add(v)
-        # total_weight += weight
-
-        return mst_edges, nodes_in_mst
+        total_weight += weight
+        
+    return nodes_in_mst, mst_edges, total_weight
 
 def kruskal():
     """
